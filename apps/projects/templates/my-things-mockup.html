@@ -2,11 +2,14 @@
 <html>
 <head>
 <style>/* as usual */ @import url(http://fonts.googleapis.com/css?family=Raleway:400,700,900,300);
+	
+	a { text-decoration: none; }
     
     * {font-family:Raleway;}
 
     .creation-box {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+		border-radius:3px;
         margin: 10px;
         padding: 10px;
         width: 360px;
@@ -43,7 +46,7 @@
 	
     /* delete button */
     .creation-box button {
-        margin-top: 150px;
+        margin-top: 100px;
     }
 	
 	.creation-box button:hover {
@@ -55,6 +58,26 @@
     .share-box:hover{
 		color: #fff;
 		background-color: #017CC2;
+	}
+	
+	/* creation link */
+	.link-box {
+		width:99%;
+		height:30px;
+		background-color: #4078C0;
+		border-radius: 5px;
+		box-shadow: 0 0 15px #000;
+		text-align: center;
+		color: #fff;
+		font-size: 1.3em;
+		padding-top: 5px;
+		margin: auto;
+		margin-top: 15px;
+		transition: background-color 0.5s ease;
+	}
+	
+	.link-box:hover {
+		background-color: #003490;
 	}
     
 </style>
@@ -68,6 +91,9 @@
     <div class="share-box">
         <input type="checkbox" name="share">shared?</input>
     </div>
+	<a href="#"><div class="link-box">
+		Open
+	</div></a>
 </div>
 <div class="creation-box">
     <input type="text" name="creation-title" value="Creation Title Here"></input><br/>
@@ -75,6 +101,9 @@
     <div class="share-box">
         <input type="checkbox" name="share">shared?</input>
     </div>
+	<a href="#"><div class="link-box">
+		Open
+	</div></a>
 </div>
 <div class="creation-box">
     <input type="text" name="creation-title" value="Creation Title Here"></input><br/>
@@ -82,6 +111,9 @@
     <div class="share-box">
         <input type="checkbox" name="share">shared?</input>
     </div>
+	<a href="#"><div class="link-box">
+		Open
+	</div></a>
 </div>
 <div class="creation-box">
     <input type="text" name="creation-title" value="Creation Title Here"></input><br/>
@@ -89,6 +121,9 @@
     <div class="share-box">
         <input type="checkbox" name="share">shared?</input>
     </div>
+	<a href="#"><div class="link-box">
+		Open
+	</div></a>
 </div>
 <div class="creation-box">
     <input type="text" name="creation-title" value="Creation Title Here"></input><br/>
@@ -96,6 +131,29 @@
     <div class="share-box">
         <input type="checkbox" name="share">shared?</input>
     </div>
+	<a href="#"><div class="link-box">
+		Open
+	</div></a>
+</div>
+<div class="creation-box">
+    <input type="text" name="creation-title" value="Creation Title Here"></input><br/>
+    <button type="button" name="delete">delete</button>
+    <div class="share-box">
+        <input type="checkbox" name="share">shared?</input>
+    </div>
+	<a href="#"><div class="link-box">
+		Open
+	</div></a>
+</div>
+<div class="creation-box">
+    <input type="text" name="creation-title" value="Creation Title Here"></input><br/>
+    <button type="button" name="delete">delete</button>
+    <div class="share-box">
+        <input type="checkbox" name="share">shared?</input>
+    </div>
+	<a href="#"><div class="link-box">
+		Open
+	</div></a>
 </div>
 
 
