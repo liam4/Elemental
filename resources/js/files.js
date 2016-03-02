@@ -1,20 +1,32 @@
 function $(e) {
+    // ** We're calling e.split(' ') multiple times here - shouldn't we just
+    // make a variable called "words" or something?
     if (e.split(' ')[e.split(' ').length - 1][0] == '#') {
         return document.getElementById(e.substr(1, e.length - 1));
     }
+
+    // ** Assigning to global variable will pollute the window. Shouldn't
+    // there be a `var` here?
     arr = Array.prototype.slice.call(document.querySelectorAll(e));
+
+    // ** arr is already an array and as such implements forEach by default,
+    // why are we assigning a new method?
     arr.forEach = function(callback) {
         for (var i = 0; i < arr.length; i++) {
-            callback(arr[i], i);            
+            callback(arr[i], i);
         }
     };
+
+    // ** Why is this alias needed?
     arr.each = arr.forEach;
+
     arr.on = function(event, callback) {
         arr.forEach(function(item) {
             item.addEventListener(event, callback);
         });
         return arr;
     };
+
     return arr;
 }
 
@@ -82,6 +94,8 @@ function getBlockHtml(el) {
         name = '';
     }
 
+    // ** Ew, parsing HTML by concatenation of strings. We really should just
+    // be utilizing the DOM.
     var parsedHtml;
 
     var attrInputs = [];
@@ -93,6 +107,8 @@ function getBlockHtml(el) {
                 '<span class="attr-input" contenteditable="true">' + el.attr[attr] + '</span>',
             '</span>'
         ].join(''));
+
+        // ** Is this still necessary/used/helpful?
         console.log(attr);
     }
     attrInputs = attrInputs.join('');
@@ -119,6 +135,7 @@ function getBlockHtml(el) {
 function generateWrapperBlocks(jsonData) {
     var attrInputs = [];
     for (attr in jsonData.attr) {
+        // ** Again, using templates.
         attrInputs.push([
             '<span class="attr-holder">',
                 '<span class="attr-dropdown">' + attr + '</span>',
@@ -155,6 +172,7 @@ function getCSSAttributesHTML(attributes) {
     var pushedHtml = [];
     for (attr in attributes) {
         var attrValue = attributes[attr];
+        // ** AGAIN, using templates.
         pushedHtml.push('<li class="stack e-rule">rule <span class="script-input css-attr-dropdown" contenteditable="true">' + attr + '</span>: <span class="script-input" contenteditable="true">' + attrValue + '</span></li>');
     }
     return pushedHtml.join('');
@@ -163,6 +181,7 @@ function getCSSAttributesHTML(attributes) {
 function generateBlocks(jsonData, ext) {
     if (ext == 'html') {
         jsonData = jsonData.child;
+        // ** Yet again, using templates.
         var baseHtml = [
             '<ul class="script">',
                 '<li class="hat">&lt;!DOCTYPE html&gt;</li>',
@@ -184,7 +203,7 @@ function generateBlocks(jsonData, ext) {
             }
         }
 
-        
+
         baseHtml.push('</ul><li class="c-footer">&lt;/body&gt;</li></ul></ul>');
         return baseHtml.join('');
     } else if (ext == 'css') {
@@ -321,7 +340,7 @@ var RIGHT_CLICKED;
 
 $('.filePane').on('click', function(ev) {
     var el = ev.target;
-    if (el.classList.contains('file') || parentHasClass(el, 'file')) { 
+    if (el.classList.contains('file') || parentHasClass(el, 'file')) {
         if (el.classList && el.classList.contains('file')) {
             loadFile(el.children[0].dataset.file, el.children[0]);
         } else if (parentHasClass(el, 'file')) {
